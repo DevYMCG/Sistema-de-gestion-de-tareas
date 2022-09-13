@@ -9,4 +9,10 @@
 #  updated_at  :datetime         not null
 #
 class Category < ApplicationRecord
+    has_many :tasks
+
+    # validar informacion en blanco
+    validates :name, :description, presence: true
+    # Validar que el campo nombre sea unico
+    validates :name, uniqueness: { case_sensitive: false }
 end

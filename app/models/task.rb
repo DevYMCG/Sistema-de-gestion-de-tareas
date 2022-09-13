@@ -13,4 +13,18 @@
 #
 class Task < ApplicationRecord
   belongs_to :category
+  belongs_to :owner, class_name: 'User'
+
+  validates :name, :description, presence: true
+  validates :name, uniqueness: { case_sensitive: false }
+  validate :due_date_validity
+
+  def due_date_validity
+    # validar que el campo exista
+    return if due_date.blank?
+    #validar que la fecha no este en el pasado
+    return if due_date > Date.today
+    # si las condiciones anteriores no se cumplen entonces
+    errors.add :due_date, I18n.t('task.errors.invalid.due_date')
+  end
 end

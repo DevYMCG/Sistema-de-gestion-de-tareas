@@ -16,6 +16,10 @@ en:
   common:
     back: Atrás
   hello: Hello world
+  task:
+    errors:
+      invalid:
+        due_date: Due date
   tasks:
     form:
       category: Category
