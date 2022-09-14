@@ -5,5 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :owned_tasks
   has_many :participations, class_name: 'Participant'
-  has_many :tasks, through: participations
+  has_many :tasks, through: :participations
 end
